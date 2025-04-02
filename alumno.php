@@ -1,0 +1,37 @@
+<?php
+//var_dump($_POST);\
+$nombre = "";
+$ci = "";
+$telefono = '';
+$password = '';
+$permiso = 0;
+$email = '';
+if (!empty($_POST)) {
+    if (empty($_POST["name"])) {
+        echo "<script>alert('Nombre es obligatorio')</script><br>";
+    } else {
+        $nombre = $_POST["name"];
+    }
+    if (empty($_POST["ci"])) {
+        echo "<script>alert('Ci es obligatorio')</script>";
+    } else {
+        $ci = $_POST["ci"];
+    }
+    if (empty($_POST["email"])) {
+        echo "Email es obligatorio<br>";
+    } else
+        $email = $_POST["email"];
+    if (empty($_POST["telefono"])) {
+        echo "Telefono es obligatorio<br>";
+    } else
+        $telefono = $_POST["telefono"];
+    if (empty($_POST["password"])) {
+        echo "password es obligatorio<br>";
+    } else
+        $password = $_POST["password"];
+} else {
+    echo "Error al recibir datos";
+}
+ //header('Location:index.php');
+
+
