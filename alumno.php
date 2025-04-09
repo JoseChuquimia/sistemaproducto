@@ -1,7 +1,7 @@
 <?php
 //var_dump($_POST);\
+include_once "conexion.php";
 $nombre = "";
-$ci = "";
 $telefono = '';
 $password = '';
 $permiso = 0;
@@ -11,11 +11,6 @@ if (!empty($_POST)) {
         echo "<script>alert('Nombre es obligatorio')</script><br>";
     } else {
         $nombre = $_POST["name"];
-    }
-    if (empty($_POST["ci"])) {
-        echo "<script>alert('Ci es obligatorio')</script>";
-    } else {
-        $ci = $_POST["ci"];
     }
     if (empty($_POST["email"])) {
         echo "Email es obligatorio<br>";
@@ -29,6 +24,16 @@ if (!empty($_POST)) {
         echo "password es obligatorio<br>";
     } else
         $password = $_POST["password"];
+    if (empty($_POST["permiso"])) {
+        echo "permiso es obligatorio<br>";
+    } else
+        $permiso = $_POST["permiso"];
+    //codigo para adiconar a la base de datos
+    $sql = "INSERT INTO USUARIO(NOMBRE,EMAIL,PASSWORD,TELEFONO,IDPERMISO)";
+    $sql = $sql . " VALUES('$nombre','$email','$password','$telefono',$permiso)";
+    //echo $sql;
+    $queryResult=mysqli_query($conn,$sql);
+    header('Location:reporteusuario.php');
 } else {
     echo "Error al recibir datos";
 }

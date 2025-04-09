@@ -1,8 +1,8 @@
 <?php
 include_once "conexion.php";
-$sql="SELECT * FROM usuario";
+$sql="SELECT *FROM USUARIO";
 $result=mysqli_query($conn,$sql)
-//var_drump($result);
+//var_dump($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,17 +16,16 @@ $result=mysqli_query($conn,$sql)
     <table border="2">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Correo Electronico</th>
-                <th>Telefono</th>
+                <th>id</th>
+                <th>nombre</th>
+                <th>correo electronico</th>
+                <th>telefono</th>
             </tr>
         </thead>
         <tbody>
           <?php
-          while($row=mysqli_fetch_array($result))
-          {
-        
+        while($row=mysqli_fetch_array($result))
+        {
             ?>
             <tr>
                 <td><?=$row['id'];?></td>
@@ -36,8 +35,8 @@ $result=mysqli_query($conn,$sql)
                 <td><?=$row['idpermiso'];?></td>
             </tr>
             <?php
-          }
-          ?>
+        }
+        ?>
         </tbody>
     </table>
 </body>
